@@ -1,0 +1,56 @@
+﻿using IdentityGmailProject.EntityLayer.Concrete;
+using IdentityGmailProject.PresentationLayer.Models;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+
+namespace IdentityGmailProject.PresentationLayer.Controllers
+{
+    public class RegisterController : Controller
+    {
+        private readonly UserManager<AppUser> _userManager;
+
+        public RegisterController(UserManager<AppUser> userManager)
+        {
+            _userManager = userManager;
+        }
+
+        [HttpGet]
+        public IActionResult Index()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Index(RegisterViewModel model)
+        {
+            AppUser appUser = new AppUser()
+            {
+                Name = model.Name,
+                Email = model.Email,
+                Surname = model.Surname,
+                UserName = model.Username,
+                CoverImageUrl="",
+                ProfilImageUrl = "",
+                Detail = "",
+                Job = ""
+
+            };
+            // _userManager kullanarak verilen kullanıcıyı (appUser) ve şifresini (model.Password) sisteme kaydetmeye çalışır. Şifreyi hashleyerek kaydetme yapar
+            var result = await _userManager.CreateAsync(appUser, model.Password);
+
+            //giriş başarılıysa logine gönder
+            if (result.Succeeded)
+            {
+                return RedirectToAction("Index", "Login");
+            }
+            else
+            {
+                foreach (var item in result.Errors)
+                {
+                    ModelState.AddModelError("", item.Description);
+                }
+            }
+            return View();
+        }
+    }
+}
