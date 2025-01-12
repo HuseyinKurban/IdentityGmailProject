@@ -20,5 +20,7 @@ namespace IdentityGmailProject.EntityLayer.Concrete
         public string Job { get; set; }
 
         public string Detail { get; set; }
+
+       
     }
 }

@@ -26,5 +26,7 @@ namespace IdentityGmailProject.EntityLayer.Concrete
         public Category Category { get; set; }
 
         public DateTime MessageDate { get; set; }
+
+
     }
 }

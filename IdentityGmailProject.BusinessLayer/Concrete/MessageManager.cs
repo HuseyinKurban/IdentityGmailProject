@@ -33,6 +33,11 @@ namespace IdentityGmailProject.BusinessLayer.Concrete
            return _messageDal.GetById(id);
         }
 
+        public List<Message> TGetListInbox(string mail)
+        {
+           return _messageDal.GetListInbox(mail);
+        }
+
         public void TInsert(Message entity)
         {
             _messageDal.Insert(entity);

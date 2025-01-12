@@ -5,6 +5,7 @@ using IdentityGmailProject.DataAccessLayer.Context;
 using IdentityGmailProject.DataAccessLayer.EntityFramework;
 using IdentityGmailProject.EntityLayer.Concrete;
 using IdentityGmailProject.PresentationLayer.Models;
+using Microsoft.EntityFrameworkCore;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -18,6 +19,8 @@ builder.Services.AddScoped<ICategoryService,CategoryManager>();
 
 builder.Services.AddScoped<IMessageDal, EfMessageDal>();
 builder.Services.AddScoped<IMessageService, MessageManager>();
+builder.Services.AddScoped<MessageManager>();
+
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
