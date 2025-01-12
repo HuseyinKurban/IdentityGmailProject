@@ -17,9 +17,13 @@ builder.Services.AddIdentity<AppUser, AppRole>().AddEntityFrameworkStores<GmailC
 builder.Services.AddScoped<ICategoryDal, EfCategoryDal>();
 builder.Services.AddScoped<ICategoryService,CategoryManager>();
 
+
 builder.Services.AddScoped<IMessageDal, EfMessageDal>();
 builder.Services.AddScoped<IMessageService, MessageManager>();
-builder.Services.AddScoped<MessageManager>();
+
+builder.Services.AddScoped<IAppUserDal, EfAppUserDal>();
+builder.Services.AddScoped<IAppUserService, AppUserManager>();
+
 
 
 // Add services to the container.
