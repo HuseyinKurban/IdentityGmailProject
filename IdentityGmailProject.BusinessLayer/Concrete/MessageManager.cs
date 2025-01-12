@@ -33,9 +33,14 @@ namespace IdentityGmailProject.BusinessLayer.Concrete
            return _messageDal.GetById(id);
         }
 
-        public List<Message> TGetListInbox(string mail)
+        public List<Message> TGetListInbox(int id)
         {
-           return _messageDal.GetListInbox(mail);
+           return _messageDal.GetListInbox(id);
+        }
+
+        public List<Message> TGetListSendbox(int id)
+        {
+            return _messageDal.GetListSendbox(id);
         }
 
         public void TInsert(Message entity)

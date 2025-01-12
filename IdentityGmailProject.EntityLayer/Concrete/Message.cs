@@ -7,17 +7,12 @@ using System.Threading.Tasks;
 namespace IdentityGmailProject.EntityLayer.Concrete
 {
     public class Message
-    {
-       
+    {     
         public int MessageID { get; set; }
-     
-        public string SenderMail { get; set; }
-     
-        public string ReceiverMail { get; set; }
-    
-        public string Subject { get; set; }
 
-        public bool Status { get; set; }
+        public string Title { get; set; }
+
+        public bool IsRead { get; set; }
 
         public string MessageContent { get; set; }
 
@@ -27,6 +22,10 @@ namespace IdentityGmailProject.EntityLayer.Concrete
 
         public DateTime MessageDate { get; set; }
 
+        public int SenderId { get; set; }
+        public AppUser Sender { get; set; }
 
+        public int ReceiverId { get; set; }
+        public AppUser Receiver { get; set; }
     }
 }

@@ -21,6 +21,9 @@ namespace IdentityGmailProject.EntityLayer.Concrete
 
         public string Detail { get; set; }
 
-       
+        public List<Message> SentMessages { get; set; }
+
+        public List<Message> ReceivedMessages { get; set; }
+
     }
 }

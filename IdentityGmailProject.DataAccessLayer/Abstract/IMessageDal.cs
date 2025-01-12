@@ -9,6 +9,8 @@ namespace IdentityGmailProject.DataAccessLayer.Abstract
 {
     public interface IMessageDal:IGenericDal<Message>
     {
-        List<Message> GetListInbox(string mail);
+        List<Message> GetListInbox(int id);
+        List<Message> GetListSendbox(int id);
+
     }
 }

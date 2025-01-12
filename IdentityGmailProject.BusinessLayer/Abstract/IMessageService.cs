@@ -9,6 +9,7 @@ namespace IdentityGmailProject.BusinessLayer.Abstract
 {
     public interface IMessageService : IGenericService<Message>
     {
-        List<Message> TGetListInbox(string mail);
+        List<Message> TGetListInbox(int id);
+        List<Message> TGetListSendbox(int id);
     }
 }
