@@ -22,7 +22,9 @@ namespace IdentityGmailProject.DataAccessLayer.EntityFramework
 
         public Message GetInboxMessageDetails(int id)
         {
-          var values = context.Messages.Where(x=>x.ReceiverId==id).Include(y=>y.Sender).Include(p=>p.Category).FirstOrDefault();
+          var values = context.Messages.Where(x=>x.MessageID==id).Include(y=>y.Sender).Include(p=>p.Category).FirstOrDefault();
+            values.IsRead = true;
+           context.SaveChanges();  
             return values;
         }
 
@@ -41,7 +43,7 @@ namespace IdentityGmailProject.DataAccessLayer.EntityFramework
 
         public Message GetSendboxMessageDetails(int id)
         {
-            var values = context.Messages.Where(x => x.SenderId == id).Include(y => y.Receiver).Include(p => p.Category).FirstOrDefault();
+            var values = context.Messages.Where(x => x.MessageID == id).Include(y => y.Receiver).Include(p => p.Category).FirstOrDefault();
             return values;
         }
     }

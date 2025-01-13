@@ -95,18 +95,16 @@ namespace IdentityGmailProject.PresentationLayer.Controllers
             return RedirectToAction("Sendbox");
         }
 
-        public async Task<IActionResult> InboxMessageDetails()
+        public  IActionResult InboxMessageDetails(int id)
         {
-            var user = await _userManager.FindByNameAsync(User.Identity.Name);
-            var id = user.Id;
+        
             var values = _messageService.TGetInboxMessageDetails(id);
             return View(values);
         }
 
-        public async Task<IActionResult> SendboxMessageDetails()
+        public IActionResult SendboxMessageDetails(int id)
         {
-            var user = await _userManager.FindByNameAsync(User.Identity.Name);
-            var id = user.Id;
+        
             var values = _messageService.TGetSendboxMessageDetails(id);
             return View(values);
         }

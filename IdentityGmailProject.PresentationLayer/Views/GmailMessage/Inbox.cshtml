@@ -56,16 +56,19 @@
                                                         {
                                                             <i class="fa fa-star" style="color:gold" aria-hidden="true"></i>
                                                         }
-                                                        else
+                                                        @if (item.IsRead == true)
                                                         {
-                                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                                            <i class="fa fa-star" style="color:dimgrey" aria-hidden="true"></i>
                                                         }
                                                     </button>
                                                 </div>
                                             </div>
-                                            <a href="/GmailMessage/InboxMessageDetails/@item.ReceiverId" class="col-mail col-mail-2">
-                                                <div class="subject"><b>@item.Sender.Name @item.Sender.Surname &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; @item.Title &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </b> @(item.MessageContent.Length <= 50 ? item.MessageContent : item.MessageContent.Substring(0, 50) + "...")</div>
-                                                <div class="date">@item.MessageDate.ToString("HH:mm")</div>
+                                            <a href="/GmailMessage/InboxMessageDetails/@item.MessageID" class="col-mail col-mail-2">
+                                                <div class="subject"><b>@item.Sender.Name @item.Sender.Surname &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; @item.Title &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </b> @(item.MessageContent.Length <= 70 ? item.MessageContent : item.MessageContent.Substring(0, 70) + "...")</div>
+                                                <div class="date">
+                                                    @item.MessageDate.ToString("HH:mm")
+                                                </div>
+
                                             </a>
                                         </div>
                                     </div>
