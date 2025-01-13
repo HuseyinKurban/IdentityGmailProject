@@ -12,5 +12,8 @@ namespace IdentityGmailProject.DataAccessLayer.Abstract
         List<Message> GetListInbox(int id);
         List<Message> GetListSendbox(int id);
 
+        Message GetInboxMessageDetails(int id);
+        Message GetSendboxMessageDetails(int id);
+
     }
 }

@@ -59,7 +59,7 @@ namespace IdentityGmailProject.PresentationLayer.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> NewMessageAsync()
+        public async Task<IActionResult> NewMessage()
         {
             var categoryList = _categoryService.TGetAll();
             List<SelectListItem> values1 = (from x in categoryList
@@ -96,6 +96,22 @@ namespace IdentityGmailProject.PresentationLayer.Controllers
 
             _messageService.TInsert(message);
             return RedirectToAction("Sendbox");
+        }
+
+        public async Task<IActionResult> InboxMessageDetails()
+        {
+            var user = await _userManager.FindByNameAsync(User.Identity.Name);
+            var id = user.Id;
+            var values = _messageService.TGetInboxMessageDetails(id);
+            return View(values);
+        }
+
+        public async Task<IActionResult> SendboxMessageDetails()
+        {
+            var user = await _userManager.FindByNameAsync(User.Identity.Name);
+            var id = user.Id;
+            var values = _messageService.TGetSendboxMessageDetails(id);
+            return View(values);
         }
     }
 }

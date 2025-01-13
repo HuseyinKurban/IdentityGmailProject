@@ -11,5 +11,8 @@ namespace IdentityGmailProject.BusinessLayer.Abstract
     {
         List<Message> TGetListInbox(int id);
         List<Message> TGetListSendbox(int id);
+
+        Message TGetInboxMessageDetails(int id);
+        Message TGetSendboxMessageDetails(int id);
     }
 }

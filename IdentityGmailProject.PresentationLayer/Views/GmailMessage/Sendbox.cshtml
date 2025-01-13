@@ -55,7 +55,7 @@
                                                     </button>
                                                 </div>
                                             </div>
-                                            <a href="/GmailMessage/GetSendboxMessageDetails/@item.MessageID" class="col-mail col-mail-2">
+                                            <a href="/GmailMessage/SendboxMessageDetails/@item.SenderId" class="col-mail col-mail-2">
                                                 <div class="subject"><b>@item.Receiver.Name @item.Receiver.Surname &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; @item.Title &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </b> @(item.MessageContent.Length <= 50 ? item.MessageContent : item.MessageContent.Substring(0, 50) + "...")</div>
                                                 <div class="date">@item.MessageDate.ToString("HH:mm")</div>
                                             </a>
@@ -90,5 +90,3 @@
 
     </div>
 </div>
-
-

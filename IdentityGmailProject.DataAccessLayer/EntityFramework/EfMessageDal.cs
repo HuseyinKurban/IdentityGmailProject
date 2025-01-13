@@ -20,6 +20,12 @@ namespace IdentityGmailProject.DataAccessLayer.EntityFramework
             context=_context;
         }
 
+        public Message GetInboxMessageDetails(int id)
+        {
+          var values = context.Messages.Where(x=>x.ReceiverId==id).Include(y=>y.Sender).Include(p=>p.Category).FirstOrDefault();
+            return values;
+        }
+
         public List<Message> GetListInbox(int id)
         {
           
@@ -30,6 +36,12 @@ namespace IdentityGmailProject.DataAccessLayer.EntityFramework
         public List<Message> GetListSendbox(int id)
         {
             var values = context.Messages.Where(x => x.SenderId == id).OrderByDescending(y => y.MessageDate).Include(x => x.Receiver).Include(c => c.Category).ToList();
+            return values;
+        }
+
+        public Message GetSendboxMessageDetails(int id)
+        {
+            var values = context.Messages.Where(x => x.SenderId == id).Include(y => y.Receiver).Include(p => p.Category).FirstOrDefault();
             return values;
         }
     }
