@@ -22,14 +22,11 @@ namespace IdentityGmailProject.PresentationLayer.Controllers
             _userService = userService;
         }
 
-
-
-
-
         public async Task<IActionResult> Inbox()
         {
             var user = await _userManager.FindByNameAsync(User.Identity.Name);
             var id=user.Id;
+            
 
             if (user != null)
             {
