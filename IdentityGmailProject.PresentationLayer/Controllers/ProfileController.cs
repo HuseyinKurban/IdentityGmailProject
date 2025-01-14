@@ -27,6 +27,14 @@ namespace IdentityGmailProject.PresentationLayer.Controllers
 
             var values = await _userManager.FindByNameAsync(User.Identity.Name);
 
+            var v1=_messageService.TGetListInbox(values.Id).Count();
+            var v2=_messageService.TGetListSendbox(values.Id).Count();
+
+
+            ViewBag.gelen = v1;
+            ViewBag.gonderilen = v2;
+            ViewBag.toplam = v1 + v2;
+
            AppUserEdit appUserEdit=new AppUserEdit();
             appUserEdit.Name = values.Name;
             appUserEdit.Surname = values.Surname;
