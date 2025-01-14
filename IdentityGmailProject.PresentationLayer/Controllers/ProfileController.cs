@@ -1,7 +1,9 @@
-﻿using IdentityGmailProject.EntityLayer.Concrete;
+﻿using IdentityGmailProject.BusinessLayer.Abstract;
+using IdentityGmailProject.EntityLayer.Concrete;
 using IdentityGmailProject.PresentationLayer.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using NuGet.Packaging.Signing;
 
 namespace IdentityGmailProject.PresentationLayer.Controllers
 {
@@ -9,18 +11,23 @@ namespace IdentityGmailProject.PresentationLayer.Controllers
     {
         private readonly UserManager<AppUser> _userManager;
         private readonly SignInManager<AppUser> _signInManager;
+        private readonly IMessageService _messageService;
 
-        public ProfileController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager)
+        public ProfileController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, IMessageService messageService)
         {
             _userManager = userManager;
             _signInManager = signInManager;
+           _messageService = messageService;
         }
 
         [HttpGet]
         public async Task<IActionResult> MyProfile()
         {
+           
+
             var values = await _userManager.FindByNameAsync(User.Identity.Name);
-            AppUserEdit appUserEdit=new AppUserEdit();
+
+           AppUserEdit appUserEdit=new AppUserEdit();
             appUserEdit.Name = values.Name;
             appUserEdit.Surname = values.Surname;
             appUserEdit.ProfilImageUrl = values.ProfilImageUrl;

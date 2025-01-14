@@ -27,7 +27,7 @@ namespace IdentityGmailProject.PresentationLayer.Controllers
             var user = await _userManager.FindByNameAsync(User.Identity.Name);
             var id=user.Id;
             
-
+           
             if (user != null)
             {
                 var values = _messageService.TGetListInbox(id);
