@@ -2,6 +2,7 @@ using IdentityGmailProject.BusinessLayer.Abstract;
 using IdentityGmailProject.BusinessLayer.Concrete;
 using IdentityGmailProject.DataAccessLayer.Abstract;
 using IdentityGmailProject.DataAccessLayer.Context;
+using IdentityGmailProject.BusinessLayer.Container;
 using IdentityGmailProject.DataAccessLayer.EntityFramework;
 using IdentityGmailProject.EntityLayer.Concrete;
 using IdentityGmailProject.PresentationLayer.Models;
@@ -14,16 +15,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<GmailContext>();
 builder.Services.AddIdentity<AppUser, AppRole>().AddEntityFrameworkStores<GmailContext>().AddErrorDescriber<CustomIdentityErrorValidator>();
 
-builder.Services.AddScoped<ICategoryDal, EfCategoryDal>();
-builder.Services.AddScoped<ICategoryService,CategoryManager>();
-
-
-builder.Services.AddScoped<IMessageDal, EfMessageDal>();
-builder.Services.AddScoped<IMessageService, MessageManager>();
-
-builder.Services.AddScoped<IAppUserDal, EfAppUserDal>();
-builder.Services.AddScoped<IAppUserService, AppUserManager>();
-
+builder.Services.ContainerDependencies();
 
 
 // Add services to the container.
