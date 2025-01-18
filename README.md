@@ -44,4 +44,3 @@ Mail Yönetim Sistemi, kullanıcıların e-posta gönderme, alma ve yönetim sü
 ![4](https://github.com/user-attachments/assets/1aba889d-2235-4b9d-88b2-d13918e2054e)
 ![5](https://github.com/user-attachments/assets/c0ee4b01-6dc9-42e1-a74b-0babe5529b98)
 
-
